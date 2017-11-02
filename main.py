@@ -14,9 +14,11 @@ class TestLogin(unittest.TestCase):
         self.driver = webdriver.Firefox(capabilities=firefox_capabilities)
 
     def test_login(self):
+        main = main_page.MainPage(self.driver)
+
         helper.authenticate(self.driver)
 
-        self.assertTrue(main_page.get_logout_button_presence(self.driver))
+        self.assertTrue(main.get_logout_button_presence(self.driver))
 
     def tearDown(self):
         self.driver.quit()
